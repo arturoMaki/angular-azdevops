@@ -1,0 +1,76 @@
+trigger:
+  - '*'
+
+variables:
+  - name: 'ProjectName'
+    value: 'angular-azdevops'
+  - group: 'AngularApp'
+
+stages:
+  - stage: Build
+    displayName: 'Build the web application'
+    jobs:
+    - job: 'Build'
+      displayName: 'Build job'
+      pool:
+        vmImage: 'ubuntu-20.04'
+        demands:
+        - npm
+
+      steps:
+        - script: 'node --version'
+          displayName: 'Check Node Version'
+        - task: Npm@1
+          displayName: 'Run npm install'
+          inputs:
+            command: 'install'
+            verbose: false
+
+        - script: 'npm install -g @angular/cli'
+          displayName: 'Install @angular/cli Globally'
+
+        - task: CmdLine@2
+          displayName: "Run Unit Tests"
+          inputs:
+            script: ng test
+
+        - script: 'ng build --configuration production'
+          displayName: 'Build Angular Application'
+
+        - task: ArchiveFiles@2
+          displayName: 'Archive files'
+          inputs:
+            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/$(ProjectName)/'
+            includeRootFolder: false
+            archiveType: zip
+            archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
+            replaceExistingArchive: true
+
+        - task: PublishBuildArtifacts@1
+          inputs:
+            PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+            ArtifactName: 'drop'
+            publishLocation: 'Container'
+
+  - stage: Development
+    displayName: 'Deploy to Development'
+    dependsOn: Build
+    condition: succeeded()
+    jobs:
+    - deployment: Development
+      pool:
+        vmImage: 'ubuntu-20.04'
+      environment: AngularDevelopment
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+              - task: AzureWebApp@1
+                displayName: 'Deploy App Service'
+                inputs:
+                  azureSubscription: 'Resource Manager - Tailspin - Space Game'
+                  appType: 'webAppLinux'
+                  appName: '$(WebAppNameDev)'
+                  package: '$(Pipeline.Workspace)/drop/$(Build.BuildId).zip'
+                  runtimeStack: 'Node - 18-lts'
+                  # startUpCommand: 'pm2 serve /home/site/wwwroot -no-daemon-spa'
