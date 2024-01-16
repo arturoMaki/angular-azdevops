@@ -1,1 +1,5 @@
 <div class="content">angular-azdevops app is running!</div>
+<div *ngFor="let new of news$ | async">
+  <h2>{{ new.Title }}</h2>
+  <h4>{{ new.Subtitle }}</h4>
+</div>
