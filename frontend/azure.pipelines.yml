@@ -22,6 +22,7 @@ stages:
           displayName: 'Check Node Version'
         - task: Npm@1
           displayName: 'Run npm install'
+          workingDirectory: './frontend'
           inputs:
             command: 'install'
             verbose: false
@@ -31,16 +32,18 @@ stages:
 
         - task: CmdLine@2
           displayName: "Run Unit Tests"
+          workingDirectory: './frontend'
           inputs:
             script: ng test
 
         - script: 'ng build --configuration production'
+          workingDirectory: './frontend'
           displayName: 'Build Angular Application'
 
         - task: ArchiveFiles@2
           displayName: 'Archive files'
           inputs:
-            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/dist/$(ProjectName)/'
+            rootFolderOrFile: '$(System.DefaultWorkingDirectory)/frontend/dist/$(ProjectName)/'
             includeRootFolder: false
             archiveType: zip
             archiveFile: $(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip
