@@ -24,6 +24,7 @@ stages:
           displayName: 'Run npm install'
           inputs:
             command: 'install'
+            workingDirectory: './frontend'
             verbose: false
           options:
             cwd: './frontend'
@@ -34,6 +35,7 @@ stages:
         - task: CmdLine@2
           displayName: "Run Unit Tests"
           inputs:
+            workingDirectory: './frontend'
             script: ng test
           options:
             cwd: './frontend'
