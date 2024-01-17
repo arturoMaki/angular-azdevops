@@ -2,4 +2,20 @@
 <div *ngFor="let new of news$ | async">
   <h2>{{ new.Title }}</h2>
   <h4>{{ new.Subtitle }}</h4>
+  <!-- replace by ImageComponent -->
+  <img
+    *ngIf="new.Image"
+    srcset="
+      http://localhost:1337/uploads/thumbnail_sport_9324f828a2.jpg  320w,
+      http://localhost:1337/uploads/small_sport_9324f828a2.jpg      576w,
+      http://localhost:1337/uploads/medium_sport_9324f828a2.jpg     768w,
+      http://localhost:1337/uploads/large_sport_9324f828a2.jpg     1200w
+    "
+    sizes="(max-width: 320px) 280px,
+          (max-width: 576px) 520px,
+          (max-width: 768px) 720px,
+          1140px"
+    src="http://localhost:1337/uploads/large_sport_9324f828a2.jpg"
+    alt="Responsive Image"
+  />
 </div>

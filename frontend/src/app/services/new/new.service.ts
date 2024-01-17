@@ -1,9 +1,10 @@
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { BaseStrapi } from 'src/common/strapi.interface';
-import { New } from '../new.interface';
 import { environment } from 'src/environments/environment';
+import { StrapiResponse } from 'strapi-sdk-js';
+import { New } from '../new.interface';
+import { BaseStrapiData } from 'src/common/strapi.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,17 @@ export class NewService {
 
   constructor(private http: HttpClient) {}
 
-  public getNews(): Observable<BaseStrapi<New>> {
+  public getNews(): Observable<StrapiResponse<BaseStrapiData<New>[]>> {
     const endpoint = '/news';
-    return this.http.get<BaseStrapi<New>>(`${this.apiUrl}${endpoint}`);
+    const params = new HttpParams()
+      .append('populate', 'news_categories')
+      .append('populate', 'Image');
+
+    return this.http.get<StrapiResponse<BaseStrapiData<New>[]>>(
+      `${this.apiUrl}${endpoint}`,
+      {
+        params: params,
+      }
+    );
   }
 }

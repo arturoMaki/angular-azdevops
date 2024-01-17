@@ -1,8 +1,3 @@
-export interface BaseStrapi<T> {
-  data: BaseStrapiData<T>[];
-  meta: any;
-}
-
 export interface BaseStrapiData<T> {
   id: number;
   attributes: T;
