@@ -40,3 +40,13 @@ From the Content-type Builder, administrators can create and manage content-type
 - Collection types are content-types that can manage several entries.
 - Single types are content-types that can only manage one entry.
 - Components are a data structure that can be used in multiple collection types and single types.
+
+### Generate typings for project schema
+
+- Run the script in the powershell to generate them: `npm run strapi ts:generate-types --debug #optional flag to display additional logging`
+
+- [Autogenerate](https://docs.strapi.io/dev-docs/configurations/typescript#strapi-specific-configuration-for-typescript)
+
+### SDK - Typescript
+
+- [strapi-sdk-js](https://strapi-sdk-js.netlify.app/api/types)
