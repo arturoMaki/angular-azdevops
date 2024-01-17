@@ -26,8 +26,6 @@ stages:
             command: 'install'
             workingDirectory: './frontend'
             verbose: false
-          options:
-            cwd: './frontend'
 
         - script: 'npm install -g @angular/cli'
           displayName: 'Install @angular/cli Globally'
@@ -37,13 +35,10 @@ stages:
           inputs:
             workingDirectory: './frontend'
             script: ng test
-          options:
-            cwd: './frontend'
 
         - script: 'ng build --configuration production'
           displayName: 'Build Angular Application'
-          options:
-            cwd: './frontend'
+          workingDirectory: './frontend'
 
         - task: ArchiveFiles@2
           displayName: 'Archive files'
