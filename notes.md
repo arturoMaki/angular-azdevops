@@ -33,6 +33,12 @@ The _@strapi-community/dockerize_ package is a CLI tool that can be used to gene
 
 Field selection does not work on relational, media, component, or dynamic zone fields. To populate these fields, use the [populate parameter](https://docs.strapi.io/dev-docs/api/rest/populate-select#population).
 
+### Component Type in Strapi
+
+A component typically refers to a reusable and configurable content structure that can be used across different content types. Components in Strapi allow you to create modular and shareable content structures that can be easily integrated into different content types.
+
+[Check the docu](https://docs.strapi.io/dev-docs/api/entity-service/components-dynamic-zones)
+
 ### Content Type Builder
 
 From the Content-type Builder, administrators can create and manage content-types: collection types and single types but also components.
@@ -46,6 +52,14 @@ From the Content-type Builder, administrators can create and manage content-type
 - Run the script in the powershell to generate them: `npm run strapi ts:generate-types --debug #optional flag to display additional logging`
 
 - [Autogenerate](https://docs.strapi.io/dev-docs/configurations/typescript#strapi-specific-configuration-for-typescript)
+
+### Copy Strapi Types in Frontend
+
+- Install @strapi/types in frontend `npm install --save-dev @strapi/types`
+
+- Run `.\copy-strapi-types-to-frontend.ps1`
+
+[Docu](https://www.youtube.com/watch?v=Gv3dAG8ktsI)
 
 ### SDK - Typescript
 
