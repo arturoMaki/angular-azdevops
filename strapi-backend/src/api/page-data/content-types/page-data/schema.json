@@ -1,0 +1,22 @@
+{
+  "kind": "collectionType",
+  "collectionName": "pages_data",
+  "info": {
+    "singularName": "page-data",
+    "pluralName": "pages-data",
+    "displayName": "PageData",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Slug": {
+      "type": "string"
+    }
+  }
+}
