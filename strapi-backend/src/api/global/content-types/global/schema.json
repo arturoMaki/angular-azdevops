@@ -4,8 +4,7 @@
   "info": {
     "singularName": "global",
     "pluralName": "globals",
-    "displayName": "Global",
-    "description": ""
+    "displayName": "Global"
   },
   "options": {
     "draftAndPublish": true

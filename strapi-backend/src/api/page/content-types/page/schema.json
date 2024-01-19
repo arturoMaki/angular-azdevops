@@ -12,20 +12,20 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "DisplayName": {
+      "type": "string"
+    },
+    "data_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::data-page.data-page"
+    },
     "components": {
       "type": "dynamiczone",
       "components": [
         "components.article",
-        "shared.section"
+        "components.section"
       ]
-    },
-    "pages_data": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::page-data.page-data"
-    },
-    "DisplayName": {
-      "type": "string"
     }
   }
 }

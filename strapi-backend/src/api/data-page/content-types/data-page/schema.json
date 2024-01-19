@@ -1,11 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "pages_data",
+  "collectionName": "data_pages",
   "info": {
-    "singularName": "page-data",
-    "pluralName": "pages-data",
-    "displayName": "PageData",
-    "description": ""
+    "singularName": "data-page",
+    "pluralName": "data-pages",
+    "displayName": "data-page"
   },
   "options": {
     "draftAndPublish": true
