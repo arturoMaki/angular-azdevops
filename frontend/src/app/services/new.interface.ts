@@ -4,7 +4,7 @@ import { StrapiResponse } from 'strapi-sdk-js';
 export interface New {
   Title: string;
   Subtitle: string;
-  Content: RichText;
+  Content: RichText[];
   Image: any;
   news_categories: StrapiResponse<NewsCategory[]>;
 }
