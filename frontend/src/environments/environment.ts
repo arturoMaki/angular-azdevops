@@ -7,6 +7,7 @@ import { Environment } from './environment.interface';
 export const environment: Environment = {
   production: false,
   strapiApiBaseUrl: 'http://localhost:1337/api',
+  strapiBaseUrl: 'http://localhost:1337',
 };
 
 /*

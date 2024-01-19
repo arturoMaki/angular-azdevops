@@ -5,7 +5,7 @@ export interface New {
   Title: string;
   Subtitle: string;
   Content: RichText[];
-  Image: any;
+  Image: { data: { attributes: { formats: { large: { url: string } } } } };
   news_categories: StrapiResponse<NewsCategory[]>;
 }
 

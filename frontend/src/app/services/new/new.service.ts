@@ -10,9 +10,9 @@ import { BaseStrapiData } from 'src/common/strapi.interface';
   providedIn: 'root',
 })
 export class NewService {
-  private apiUrl = environment.strapiApiBaseUrl;
+  private _apiUrl = environment.strapiApiBaseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   public getNews(): Observable<StrapiResponse<BaseStrapiData<New>[]>> {
     const endpoint = '/news';
@@ -20,8 +20,8 @@ export class NewService {
       .append('populate', 'news_categories')
       .append('populate', 'Image');
 
-    return this.http.get<StrapiResponse<BaseStrapiData<New>[]>>(
-      `${this.apiUrl}${endpoint}`,
+    return this._http.get<StrapiResponse<BaseStrapiData<New>[]>>(
+      `${this._apiUrl}${endpoint}`,
       {
         params: params,
       }
