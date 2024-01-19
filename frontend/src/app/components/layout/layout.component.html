@@ -11,7 +11,7 @@
   </nb-layout-column>
   <nb-layout-footer>
     <ul *ngFor="let footerItem of footerData$ | async">
-      <a nbLink [href]="footerItem.Href" [target]="footerItem.Target">{{
+      <a [href]="'https://' + footerItem.Href" [target]="footerItem.Target">{{
         footerItem.Text
       }}</a>
     </ul>

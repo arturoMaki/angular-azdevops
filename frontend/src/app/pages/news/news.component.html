@@ -1,19 +1,23 @@
 <div *ngFor="let new of news$ | async; let index = index">
   <nb-card status="success">
-    <nb-card-header>{{ new.Title }}</nb-card-header>
+    <nb-card-header>{{ new.attributes.Title }}</nb-card-header>
     <nb-card-body>
-      <h6>{{ new.Subtitle }}</h6>
+      <h6>{{ new.attributes.Subtitle }}</h6>
       <p *ngIf="newContent[index]">{{ newContent[index] }}</p>
       <img
-        *ngIf="new.Image"
+        *ngIf="new.attributes.Image"
         sizes="(max-width: 320px) 280px,
         (max-width: 576px) 520px,
         (max-width: 768px) 720px,
         1140px"
-        [src]="getImage(new.Image.data.attributes.formats.large.url)"
+        [src]="getImage(new.attributes.Image.data.attributes.formats.large.url)"
         alt="Responsive Image"
       />
     </nb-card-body>
-    <nb-card-footer>By Wikipedia</nb-card-footer>
+    <nb-card-footer
+      ><button nbButton>
+        <a nbLink [routerLink]="'/news/' + new.id">VISIT</a>
+      </button></nb-card-footer
+    >
   </nb-card>
 </div>

@@ -17,6 +17,7 @@ import { LayoutComponent } from './components/layout/layout.component';
 import { AboutComponent } from './pages/about/about.component';
 import { HomeComponent } from './pages/home/home.component';
 import { NewsComponent } from './pages/news/news.component';
+import { NewComponent } from './pages/new/new.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { NewsComponent } from './pages/news/news.component';
     AboutComponent,
     HomeComponent,
     NewsComponent,
+    NewComponent,
   ],
   imports: [
     BrowserModule,
