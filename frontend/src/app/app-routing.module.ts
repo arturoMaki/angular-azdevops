@@ -6,7 +6,7 @@ import { NewsComponent } from './pages/news/news.component';
 import { NewComponent } from './pages/new/new.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'about', component: AboutComponent },
   { path: 'news', component: NewsComponent },
   { path: 'news/:newId', component: NewComponent },
