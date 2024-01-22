@@ -64,3 +64,19 @@ From the Content-type Builder, administrators can create and manage content-type
 ### SDK - Typescript
 
 - [strapi-sdk-js](https://strapi-sdk-js.netlify.app/api/types)
+
+### Sulg
+
+- [Create a Slug Plugin](https://strapi.io/blog/how-to-build-a-plugin-with-typescript)
+
+### Create and Overwriting Controllers
+
+- [Tutorial](https://www.youtube.com/watch?v=gI1oCYibrAg)
+
+### Create Custom Services
+
+- [Tutorial](https://www.youtube.com/watch?v=ACRpJQQHRf4)
+
+### Populate Query Engine API
+
+- [Check Docu](https://docs.strapi.io/dev-docs/api/query-engine/populating)
