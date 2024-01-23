@@ -13,7 +13,9 @@
   "pluginOptions": {},
   "attributes": {
     "DisplayName": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "components": {
       "type": "dynamiczone",
@@ -24,10 +26,14 @@
       ]
     },
     "Slug": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     },
     "Title": {
-      "type": "string"
+      "type": "string",
+      "required": true,
+      "unique": true
     }
   }
 }

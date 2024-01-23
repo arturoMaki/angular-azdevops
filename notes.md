@@ -1,5 +1,22 @@
 ## Notes
 
+### Strapi Headless CMS systems have many uses, including:
+
+- Building websites and applications with any JavaScript framework (Next.js, React, Vue, Angular)
+
+- Providing content for static site generators (Gatsby, Jekyll, Hugo)
+
+- Mobile applications (iOS, Android, React Native)
+
+- Enriching product information on e-commerce sites
+
+### Strapi offers the following advantages:
+
+- Open source: Available in GitHub and supported by hundreds of contributors.
+- Self-hosted: Gives you full control of your data and privacy.
+- Customizable: Via admin panel or directly extending with plugins and customizations.
+- Flexible: Consume it from any client, SPA, or mobile app, as well as via REST or GraphQL.
+
 ### SetUp a Strapi Project
 
 #### Requirements
@@ -82,3 +99,13 @@ From the Content-type Builder, administrators can create and manage content-type
 - [Populatig Query Engine](https://docs.strapi.io/dev-docs/api/query-engine/populating)
 
 - [Populating and filtering](https://strapi.io/blog/demystifying-strapi-s-populate-and-filtering)
+
+### GraphQL Pluging
+
+- [Add GrapghQL plugin](https://strapi.io/blog/building-custom-resolvers-with-strapi)
+
+### Versioning Plugn
+
+- [Docs](https://github.com/notum-cz/strapi-plugin-content-versioning)
+
+- http://localhost:1337/api/news/1?populate[versions][populate]=\*

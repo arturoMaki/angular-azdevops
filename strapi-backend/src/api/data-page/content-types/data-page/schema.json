@@ -4,12 +4,17 @@
   "info": {
     "singularName": "data-page",
     "pluralName": "data-pages",
-    "displayName": "data-page"
+    "displayName": "data-page",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
   },
-  "pluginOptions": {},
+  "pluginOptions": {
+    "versions": {
+      "versioned": true
+    }
+  },
   "attributes": {
     "Title": {
       "type": "string"
