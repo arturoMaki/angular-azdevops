@@ -13,10 +13,8 @@ export class PageService {
 
   constructor(private _http: HttpClient) {}
 
-  public getPage$(
-    slug: string
-  ): Observable<StrapiResponse<BaseStrapiData<any>>> {
-    const endpoint = '/slug-page';
+  public getPage$(slug: string): Observable<any> {
+    const endpoint = '/pages';
 
     const url = `${this._apiUrl}${endpoint}${slug}`;
 

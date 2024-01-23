@@ -79,4 +79,6 @@ From the Content-type Builder, administrators can create and manage content-type
 
 ### Populate Query Engine API
 
-- [Check Docu](https://docs.strapi.io/dev-docs/api/query-engine/populating)
+- [Populatig Query Engine](https://docs.strapi.io/dev-docs/api/query-engine/populating)
+
+- [Populating and filtering](https://strapi.io/blog/demystifying-strapi-s-populate-and-filtering)

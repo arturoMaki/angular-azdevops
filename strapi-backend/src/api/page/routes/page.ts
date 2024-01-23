@@ -4,4 +4,10 @@
 
 import { factories } from '@strapi/strapi';
 
-export default factories.createCoreRouter('api::page.page');
+export default factories.createCoreRouter('api::page.page', {
+  config: {
+    findOne: {
+      middlewares: ['api::page.slug-populate-page'],
+    },
+  },
+});

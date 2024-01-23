@@ -15,17 +15,19 @@
     "DisplayName": {
       "type": "string"
     },
-    "data_page": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::data-page.data-page"
-    },
     "components": {
       "type": "dynamiczone",
       "components": [
         "components.article",
-        "components.section"
+        "components.section",
+        "components.alert"
       ]
+    },
+    "Slug": {
+      "type": "string"
+    },
+    "Title": {
+      "type": "string"
     }
   }
 }
