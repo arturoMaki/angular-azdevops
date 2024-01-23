@@ -1,12 +1,12 @@
 {
-  "collectionName": "components_components_articles",
+  "collectionName": "components_components_cards",
   "info": {
-    "displayName": "Article",
+    "displayName": "Card",
     "description": ""
   },
   "options": {},
   "attributes": {
-    "new": {
+    "relational_field": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::new.new"

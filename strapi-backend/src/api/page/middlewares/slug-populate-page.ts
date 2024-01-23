@@ -16,7 +16,13 @@ export default (config, { strapi }) => {
 
     ctx.query.populate = {
       components: {
-        populate: "*",
+        populate: {
+          "*": "*",
+          relational_field: {
+            populate: "*",
+            Image: "*",
+          },
+        },
       },
     };
 

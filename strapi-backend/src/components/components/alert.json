@@ -1,0 +1,13 @@
+{
+  "collectionName": "components_components_alerts",
+  "info": {
+    "displayName": "Alert",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "Content": {
+      "type": "text"
+    }
+  }
+}

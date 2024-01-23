@@ -18,9 +18,9 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "components.article",
         "components.section",
-        "components.alert"
+        "components.alert",
+        "components.card"
       ]
     },
     "Slug": {

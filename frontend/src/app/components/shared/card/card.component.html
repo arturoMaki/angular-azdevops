@@ -1,0 +1,18 @@
+<nb-card status="success">
+  <nb-card-header>{{ title }}</nb-card-header>
+  <nb-card-body>
+    <h6>{{ subtitle }}</h6>
+    <img
+      *ngIf="image"
+      sizes="(max-width: 320px) 280px,
+      (max-width: 576px) 520px,
+      (max-width: 768px) 720px,
+      1140px"
+      [src]="image"
+      alt="Responsive Image"
+    />
+  </nb-card-body>
+  <nb-card-footer>
+    <ng-content></ng-content>
+  </nb-card-footer>
+</nb-card>
