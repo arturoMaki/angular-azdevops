@@ -115,12 +115,13 @@ From the Content-type Builder, administrators can create and manage content-type
 Each time you install some Plugin or make some changes in your node_modules, it is needed to rebuild the container where those changes were done
 
 ```sh
-# Those are examples
 # Check docker-compose.yml for the correct name of the containers
-# add logs flag to check logs
-docker-compose logs strapi-backend
-docker-compose logs strapi-backendAdminer
-# start the container if it down
+# remove the image
+docker rmi strapi-backend
+# Those are examples
+docker-compose up strapi-backend
+docker-compose up strapi-backendAdminer
+# the container should start automatically. If not, start the container if it down
 docker start <container-id>
 ```
 
@@ -141,3 +142,19 @@ docker ps
 docker stop 041d0c86c241
 docker start 041d0c86c241
 ```
+### Explore contaniner MySQL_DB
+
+```sh
+docker exec -it <db-container-id> /bin/bash
+mysql --host=<ENV.DATABASE_HOST> --user=<ENV.DATABASE_USERNAME> --password=<ENV.DATABASE_PASSWORD> <ENV.DATABASE_NAME>
+SHOW DATABASES;
+USE <DATABASE_NAME>
+SHOW TABLES;
+DESCRIBE <TABLE_NAME>;
+SELECT * FROM <TABLE_NAME>;
+SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
+```
+
+### Add API Documentation
+
+- [Check the Documentation Plugin](https://market.strapi.io/plugins/@strapi-plugin-documentation)

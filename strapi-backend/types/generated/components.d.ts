@@ -1,5 +1,16 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface ComponentsAlert extends Schema.Component {
+  collectionName: 'components_components_alerts';
+  info: {
+    displayName: 'Alert';
+    description: '';
+  };
+  attributes: {
+    Content: Attribute.Text;
+  };
+}
+
 export interface ComponentsArticle extends Schema.Component {
   collectionName: 'components_components_articles';
   info: {
@@ -8,6 +19,21 @@ export interface ComponentsArticle extends Schema.Component {
   };
   attributes: {
     new: Attribute.Relation<'components.article', 'oneToOne', 'api::new.new'>;
+  };
+}
+
+export interface ComponentsCard extends Schema.Component {
+  collectionName: 'components_components_cards';
+  info: {
+    displayName: 'Card';
+    description: '';
+  };
+  attributes: {
+    relational_field: Attribute.Relation<
+      'components.card',
+      'oneToOne',
+      'api::new.new'
+    >;
   };
 }
 
@@ -65,7 +91,9 @@ export interface SharedLink extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'components.alert': ComponentsAlert;
       'components.article': ComponentsArticle;
+      'components.card': ComponentsCard;
       'components.section': ComponentsSection;
       'global-components.footer': GlobalComponentsFooter;
       'global-components.header': GlobalComponentsHeader;

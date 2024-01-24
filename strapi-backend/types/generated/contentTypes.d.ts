@@ -1,4 +1,4 @@
-import type { Schema, Attribute } from '@strapi/types';
+import type { Schema, Attribute } from '@strapi/strapi';
 
 export interface AdminPermission extends Schema.CollectionType {
   collectionName: 'admin_permissions';
@@ -813,9 +813,15 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
     singularName: 'data-page';
     pluralName: 'data-pages';
     displayName: 'data-page';
+    description: '';
   };
   options: {
     draftAndPublish: true;
+  };
+  pluginOptions: {
+    versions: {
+      versioned: true;
+    };
   };
   attributes: {
     Title: Attribute.String;
@@ -835,6 +841,15 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
+    versions: Attribute.Relation<
+      'api::data-page.data-page',
+      'manyToMany',
+      'api::data-page.data-page'
+    >;
+    vuid: Attribute.String;
+    versionNumber: Attribute.Integer & Attribute.DefaultTo<1>;
+    versionComment: Attribute.String;
+    isVisibleInListView: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
@@ -876,20 +891,49 @@ export interface ApiNewNew extends Schema.CollectionType {
     singularName: 'new';
     pluralName: 'news';
     displayName: 'New';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+    versions: {
+      versioned: true;
+    };
+  };
   attributes: {
-    Title: Attribute.String;
-    Subtitle: Attribute.String;
-    Content: Attribute.Blocks;
+    Title: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Subtitle: Attribute.String &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    Content: Attribute.Blocks &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
     news_categories: Attribute.Relation<
       'api::new.new',
       'manyToMany',
       'api::news-category.news-category'
     >;
-    Image: Attribute.Media;
+    Image: Attribute.Media &
+      Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -897,6 +941,17 @@ export interface ApiNewNew extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
       Attribute.Private;
+    versions: Attribute.Relation<'api::new.new', 'manyToMany', 'api::new.new'>;
+    vuid: Attribute.String;
+    versionNumber: Attribute.Integer & Attribute.DefaultTo<1>;
+    versionComment: Attribute.String;
+    isVisibleInListView: Attribute.Boolean & Attribute.DefaultTo<true>;
+    localizations: Attribute.Relation<
+      'api::new.new',
+      'oneToMany',
+      'api::new.new'
+    >;
+    locale: Attribute.String;
   };
 }
 
@@ -948,15 +1003,12 @@ export interface ApiPagePage extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    DisplayName: Attribute.String;
-    data_page: Attribute.Relation<
-      'api::page.page',
-      'oneToOne',
-      'api::data-page.data-page'
-    >;
+    DisplayName: Attribute.String & Attribute.Required & Attribute.Unique;
     components: Attribute.DynamicZone<
-      ['components.article', 'components.section']
+      ['components.section', 'components.alert', 'components.card']
     >;
+    Slug: Attribute.String & Attribute.Required & Attribute.Unique;
+    Title: Attribute.String & Attribute.Required & Attribute.Unique;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

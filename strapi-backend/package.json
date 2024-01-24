@@ -16,6 +16,7 @@
   "dependencies": {
     "@notum-cz/strapi-plugin-content-versioning": "^1.2.9",
     "@strapi/plugin-cloud": "4.17.1",
+    "@strapi/plugin-documentation": "^4.17.1",
     "@strapi/plugin-i18n": "4.17.1",
     "@strapi/plugin-users-permissions": "4.17.1",
     "@strapi/strapi": "4.17.1",
