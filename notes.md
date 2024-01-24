@@ -118,6 +118,7 @@ Each time you install some Plugin or make some changes in your node_modules, it 
 # Check docker-compose.yml for the correct name of the containers
 # remove the image
 docker rmi strapi-backend
+docker rmi strapi-backendAdminer
 # Those are examples
 docker-compose up strapi-backend
 docker-compose up strapi-backendAdminer
@@ -139,8 +140,7 @@ Each time you make custom changes in your strapi instance (controlles, service, 
 # Check Ids of contaners CONTAINER ID column
 docker ps
 # Copy the id: ex 041d0c86c241
-docker stop 041d0c86c241
-docker start 041d0c86c241
+docker restart 041d0c86c241
 ```
 ### Explore contaniner MySQL_DB
 
@@ -158,3 +158,26 @@ SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
 ### Add API Documentation
 
 - [Check the Documentation Plugin](https://market.strapi.io/plugins/@strapi-plugin-documentation)
+
+
+### Add Cods
+
+[Docu](https://www.restack.io/docs/strapi-knowledge-strapi-cors-configuration)
+
+```js
+# ./config/middleware
+export default [
+  ...
+  {
+    name: 'strapi::cors',
+    config: {
+      origin: process.env.CORS_ORIGIN,
+    },
+  },
+];
+
+```
+
+```
+CORS_ORIGIN=http://your-domain,http://another-domain,
+```
