@@ -166,15 +166,15 @@ SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
 
 ```js
 // ./config/middleware.ts
-export default [
+export default ({ env }) => ([
   ...
   {
     name: 'strapi::cors',
     config: {
-      origin: process.env.CORS_ORIGIN,
+      origin: env('CORS_ORIGIN'),
     },
   },
-];
+]);
 
 ```
 

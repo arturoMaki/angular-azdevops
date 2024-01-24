@@ -1,4 +1,4 @@
-export default [
+export default ({ env }) => ([
   'strapi::logger',
   'strapi::errors',
   'strapi::security',
@@ -11,7 +11,7 @@ export default [
   {
     name: 'strapi::cors',
     config: {
-      origin: process.env.CORS_ORIGIN,
+      origin: env('CORS_ORIGIN'),
     },
   },
-];
+]);
