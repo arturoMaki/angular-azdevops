@@ -104,7 +104,7 @@ From the Content-type Builder, administrators can create and manage content-type
 
 - [Add GrapghQL plugin](https://strapi.io/blog/building-custom-resolvers-with-strapi)
 
-### Versioning Plugn
+### Content-Versioning Plugin
 
 - [Docs](https://github.com/notum-cz/strapi-plugin-content-versioning)
 
