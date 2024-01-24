@@ -109,3 +109,35 @@ From the Content-type Builder, administrators can create and manage content-type
 - [Docs](https://github.com/notum-cz/strapi-plugin-content-versioning)
 
 - http://localhost:1337/api/news/1?populate[versions][populate]=\*
+
+### Add plugin or dependencies to Strapi
+
+Each time you install some Plugin or make some changes in your node_modules, it is needed to rebuild the container where those changes were done
+
+```sh
+# Those are examples
+# Check docker-compose.yml for the correct name of the containers
+# add logs flag to check logs
+docker-compose logs strapi-backend
+docker-compose logs strapi-backendAdminer
+# start the container if it down
+docker start <container-id>
+```
+
+If you want to check if those changes were applied to the container, once it is running: ex: package.json
+
+```sh
+docker exec -it <container-id> /bin/bash
+```
+
+### Add plugin or dependencies to Strapi
+
+Each time you make custom changes in your strapi instance (controlles, service, middelwares, ...), it is needed to restart the strapi-backend container
+
+```sh
+# Check Ids of contaners CONTAINER ID column
+docker ps
+# Copy the id: ex 041d0c86c241
+docker stop 041d0c86c241
+docker start 041d0c86c241
+```
