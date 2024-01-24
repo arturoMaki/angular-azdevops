@@ -165,7 +165,7 @@ SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
 [Docu](https://www.restack.io/docs/strapi-knowledge-strapi-cors-configuration)
 
 ```js
-# ./config/middleware
+// ./config/middleware.ts
 export default [
   ...
   {
