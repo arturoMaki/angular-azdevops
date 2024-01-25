@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-01-24T13:19:16.108Z"
+    "x-generation-date": "2024-01-25T15:38:23.908Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -93,6 +93,9 @@
         ],
         "properties": {
           "data": {
+            "required": [
+              "Static"
+            ],
             "type": "object",
             "properties": {
               "Title": {
@@ -100,6 +103,9 @@
               },
               "Slug": {
                 "type": "string"
+              },
+              "Static": {
+                "type": "boolean"
               },
               "versions": {
                 "type": "array",
@@ -179,12 +185,18 @@
       },
       "DataPage": {
         "type": "object",
+        "required": [
+          "Static"
+        ],
         "properties": {
           "Title": {
             "type": "string"
           },
           "Slug": {
             "type": "string"
+          },
+          "Static": {
+            "type": "boolean"
           },
           "createdAt": {
             "type": "string",
@@ -503,6 +515,9 @@
                         },
                         "Slug": {
                           "type": "string"
+                        },
+                        "Static": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -851,6 +866,9 @@
                         },
                         "Slug": {
                           "type": "string"
+                        },
+                        "Static": {
+                          "type": "boolean"
                         },
                         "createdAt": {
                           "type": "string",
@@ -3533,9 +3551,7 @@
         "properties": {
           "data": {
             "required": [
-              "DisplayName",
-              "Slug",
-              "Title"
+              "DisplayName"
             ],
             "type": "object",
             "properties": {
@@ -3558,11 +3574,16 @@
                   ]
                 }
               },
-              "Slug": {
-                "type": "string"
-              },
-              "Title": {
-                "type": "string"
+              "data_page": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
               }
             }
           }
@@ -3617,9 +3638,7 @@
       "Page": {
         "type": "object",
         "required": [
-          "DisplayName",
-          "Slug",
-          "Title"
+          "DisplayName"
         ],
         "properties": {
           "DisplayName": {
@@ -3641,11 +3660,110 @@
               ]
             }
           },
-          "Slug": {
-            "type": "string"
-          },
-          "Title": {
-            "type": "string"
+          "data_page": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {
+                      "Title": {
+                        "type": "string"
+                      },
+                      "Slug": {
+                        "type": "string"
+                      },
+                      "Static": {
+                        "type": "boolean"
+                      },
+                      "createdAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "updatedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "publishedAt": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "createdBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "updatedBy": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {}
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "versions": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "id": {
+                                  "type": "number"
+                                },
+                                "attributes": {
+                                  "type": "object",
+                                  "properties": {}
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "vuid": {
+                        "type": "string"
+                      },
+                      "versionNumber": {
+                        "type": "integer"
+                      },
+                      "versionComment": {
+                        "type": "string"
+                      },
+                      "isVisibleInListView": {
+                        "type": "boolean"
+                      }
+                    }
+                  }
+                }
+              }
+            }
           },
           "createdAt": {
             "type": "string",

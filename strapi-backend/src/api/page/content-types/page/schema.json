@@ -25,15 +25,10 @@
         "components.card"
       ]
     },
-    "Slug": {
-      "type": "string",
-      "required": true,
-      "unique": true
-    },
-    "Title": {
-      "type": "string",
-      "required": true,
-      "unique": true
+    "data_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::data-page.data-page"
     }
   }
 }

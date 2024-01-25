@@ -826,6 +826,13 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String;
     Slug: Attribute.String;
+    Static: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.SetPluginOptions<{
+        versions: {
+          versioned: true;
+        };
+      }>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1007,8 +1014,11 @@ export interface ApiPagePage extends Schema.CollectionType {
     components: Attribute.DynamicZone<
       ['components.section', 'components.alert', 'components.card']
     >;
-    Slug: Attribute.String & Attribute.Required & Attribute.Unique;
-    Title: Attribute.String & Attribute.Required & Attribute.Unique;
+    data_page: Attribute.Relation<
+      'api::page.page',
+      'oneToOne',
+      'api::data-page.data-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

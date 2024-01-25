@@ -4,8 +4,10 @@ export default (config, { strapi }) => {
 
     const selectedPage = await strapi.query("api::page.page").findOne({
       where: {
-        Slug: {
-          $eq: `/${id}`,
+        data_page: {
+          Slug: {
+            $eq: `/${id}`,
+          },
         },
       },
     });
@@ -15,6 +17,7 @@ export default (config, { strapi }) => {
     }
 
     ctx.query.populate = {
+      data_page: "*",
       components: {
         populate: {
           "*": "*",
