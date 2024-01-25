@@ -11,15 +11,22 @@ import { StrapiResponse } from 'strapi-sdk-js';
 export class PageService {
   private _apiUrl = environment.strapiApiBaseUrl;
 
+  private getLastSegment(path: string): string | null {
+    const match = path.match(/\/([^/]+\/?)$/);
+    return match ? match[0] : null;
+  }
+
   constructor(private _http: HttpClient) {}
 
-  public getPage$(slug: string): Observable<any> {
+  public getPage$(url: string): Observable<any> {
     const endpoint = '/pages';
 
-    const url = `${this._apiUrl}${endpoint}${slug}`;
+    const slug = this.getLastSegment(url);
+
+    const apiUrl = `${this._apiUrl}${endpoint}${slug}`;
 
     return this._http
-      .get<StrapiResponse<BaseStrapiData<any>>>(url)
+      .get<StrapiResponse<BaseStrapiData<any>>>(apiUrl)
       .pipe(map((res) => res.data.attributes.components));
   }
 }

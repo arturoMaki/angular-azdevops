@@ -35,14 +35,8 @@ export function initializeDynamicRouting(
       take(1),
       map((res) => res?.data),
       map((pages) => pages.filter((page) => !page.attributes.Static)),
-      map((pages) =>
-        pages.map((page) => ({
-          path: page.attributes.Slug.substring(1),
-          component: BasePageComponent,
-        }))
-      ),
-      tap((dynamicRoutes) => {
-        router.resetConfig([...myService.staticRoutes, ...dynamicRoutes]);
+      tap((pages) => {
+        router.resetConfig(myService.buildTree(pages));
       })
     );
 }

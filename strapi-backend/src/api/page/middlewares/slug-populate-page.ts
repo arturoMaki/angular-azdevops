@@ -17,7 +17,14 @@ export default (config, { strapi }) => {
     }
 
     ctx.query.populate = {
-      data_page: "*",
+      data_page: {
+        populate: {
+          "*": "*",
+          parent: {
+            "*": "*",
+          },
+        },
+      },
       components: {
         populate: {
           "*": "*",

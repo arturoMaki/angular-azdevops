@@ -39,7 +39,7 @@ export class NewService {
     const url = `${this._apiUrl}${endpoint}/${newId}`;
 
     return this._http.get<StrapiResponse<BaseStrapiData<New>>>(url, {
-      params: params,
+      params,
     });
   }
 }
