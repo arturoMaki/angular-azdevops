@@ -1,5 +1,50 @@
 ## Notes
 
+- Can be done:
+
+  - Websites:
+    Strapi is capable of serving as a backend for websites, providing APIs for content retrieval and management.
+
+  - Pages:
+    Content can be structured and organized into pages, which can then be delivered to the frontend through the provided APIs.
+
+  - Components:
+    Strapi allows you to create and manage components, providing a modular approach to building and organizing content.
+
+  - Media Assets:
+    You can handle and serve media assets (images, videos, etc.) through Strapi's media management capabilities.
+
+  - Navigation:
+    Strapi supports the creation and management of navigation elements for your website.
+
+  - Roles, Permissions, and Workflows:
+    Strapi offers robust user roles and permissions, enabling control over who can access and modify content. Workflow customization is possible.
+
+  - Internationalization:
+    Strapi supports internationalization, allowing you to manage content in multiple languages.
+
+  - Content Versioning - Plugin:
+    Content versioning can be implemented through plugins, providing the ability to track and manage changes to content over time.
+
+- Can Be Done but Requires Customization:
+
+  - Nest Content Items in Structured Tree in Content Manager:
+    While not a default feature, customization can be applied to nest content items in a structured tree within the Content Manager.
+
+  - Community and Enterprise Plugins:
+    Strapi has a supportive community and offers both community and enterprise plugins, allowing for extensive customization and feature extension.
+
+- Cannot Be Done:
+
+  - Strapi is an Open-Source Headless CMS:
+    Strapi is designed as a headless and decoupled CMS. While it's easily customizable, large-scale projects may require community and development efforts. It may not be recommended for very large projects.
+
+  - Not an All-in-One Solution:
+    Strapi focuses on content management and APIs. It does not provide a presentation layer or act as an all-in-one solution. It does not include a built-in page builder.
+
+  - Decoupled Frontend Applications:
+    Frontend applications are completely decoupled from Strapi. They cannot be hosted within Strapi; instead, Strapi provides content through APIs for consumption by separate frontend applications.
+
 ### Strapi Headless CMS systems have many uses, including:
 
 - Building websites and applications with any JavaScript framework (Next.js, React, Vue, Angular)
@@ -142,6 +187,7 @@ docker ps
 # Copy the id: ex 041d0c86c241
 docker restart 041d0c86c241
 ```
+
 ### Explore contaniner MySQL_DB
 
 ```sh
@@ -159,23 +205,20 @@ SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
 
 - [Check the Documentation Plugin](https://market.strapi.io/plugins/@strapi-plugin-documentation)
 
-
 ### Add Cods
 
 [Docu](https://www.restack.io/docs/strapi-knowledge-strapi-cors-configuration)
 
 ```js
 // ./config/middleware.ts
-export default ({ env }) => ([
-  ...
-  {
-    name: 'strapi::cors',
+export default ({ env }) => [
+  ...{
+    name: "strapi::cors",
     config: {
-      origin: env('CORS_ORIGIN'),
+      origin: env("CORS_ORIGIN"),
     },
   },
-]);
-
+];
 ```
 
 ```
