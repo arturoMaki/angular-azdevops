@@ -109,7 +109,7 @@ From the Content-type Builder, administrators can create and manage content-type
 - Single types are content-types that can only manage one entry.
 - Components are a data structure that can be used in multiple collection types and single types.
 
-### Generate typings for project schema
+### Generate types for project schema
 
 - Run the script in the powershell to generate them: `npm run strapi ts:generate-types --debug #optional flag to display additional logging`
 
@@ -205,7 +205,7 @@ SELECT <COLUMN_NAME> FROM <TABLE_NAME>;
 
 - [Check the Documentation Plugin](https://market.strapi.io/plugins/@strapi-plugin-documentation)
 
-### Add Cods
+### Add Cors
 
 [Docu](https://www.restack.io/docs/strapi-knowledge-strapi-cors-configuration)
 
@@ -224,3 +224,7 @@ export default ({ env }) => [
 ```
 CORS_ORIGIN=http://your-domain,http://another-domain,
 ```
+
+### Add SEO Plugin
+
+[Docu](https://market.strapi.io/plugins/@strapi-plugin-seo)

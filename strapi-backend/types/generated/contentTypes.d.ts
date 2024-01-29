@@ -826,13 +826,6 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
   attributes: {
     Title: Attribute.String;
     Slug: Attribute.String;
-    Static: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.SetPluginOptions<{
-        versions: {
-          versioned: true;
-        };
-      }>;
     parent: Attribute.Relation<
       'api::data-page.data-page',
       'oneToOne',
@@ -890,6 +883,121 @@ export interface ApiGlobalGlobal extends Schema.SingleType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::global.global',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLinkLink extends Schema.CollectionType {
+  collectionName: 'links';
+  info: {
+    singularName: 'link';
+    pluralName: 'links';
+    displayName: 'Link';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    InternalName: Attribute.String & Attribute.Required;
+    ExternalName: Attribute.String & Attribute.Required;
+    URL: Attribute.String;
+    Icon: Attribute.Media;
+    Target: Attribute.Enumeration<['_self', '_blank', '_parent', '_top']>;
+    data_page: Attribute.Relation<
+      'api::link.link',
+      'oneToOne',
+      'api::data-page.data-page'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::link.link', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavigationNavigation extends Schema.CollectionType {
+  collectionName: 'navigations';
+  info: {
+    singularName: 'navigation';
+    pluralName: 'navigations';
+    displayName: 'Navigation';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    InternalName: Attribute.String;
+    ExternalName: Attribute.String;
+    navigation_items: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToMany',
+      'api::navigation-item.navigation-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation.navigation',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiNavigationItemNavigationItem extends Schema.CollectionType {
+  collectionName: 'navigation_items';
+  info: {
+    singularName: 'navigation-item';
+    pluralName: 'navigation-items';
+    displayName: 'NavigationItem';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    InternalName: Attribute.String;
+    ExternalName: Attribute.String;
+    main_link: Attribute.Relation<
+      'api::navigation-item.navigation-item',
+      'oneToOne',
+      'api::link.link'
+    >;
+    navigation_links: Attribute.Relation<
+      'api::navigation-item.navigation-item',
+      'oneToMany',
+      'api::link.link'
+    >;
+    navigation_items: Attribute.Relation<
+      'api::navigation-item.navigation-item',
+      'oneToMany',
+      'api::navigation-item.navigation-item'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation-item.navigation-item',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation-item.navigation-item',
       'oneToOne',
       'admin::user'
     > &
@@ -1062,12 +1170,18 @@ export interface ApiWebsiteWebsite extends Schema.CollectionType {
     singularName: 'website';
     pluralName: 'websites';
     displayName: 'Website';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Name: Attribute.String;
+    data_pages: Attribute.Relation<
+      'api::website.website',
+      'oneToMany',
+      'api::data-page.data-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1107,6 +1221,9 @@ declare module '@strapi/types' {
       'plugin::slugify.slug': PluginSlugifySlug;
       'api::data-page.data-page': ApiDataPageDataPage;
       'api::global.global': ApiGlobalGlobal;
+      'api::link.link': ApiLinkLink;
+      'api::navigation.navigation': ApiNavigationNavigation;
+      'api::navigation-item.navigation-item': ApiNavigationItemNavigationItem;
       'api::new.new': ApiNewNew;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;

@@ -55,9 +55,7 @@ export interface GlobalComponentsFooter extends Schema.Component {
     displayName: 'Footer';
     description: '';
   };
-  attributes: {
-    Link: Attribute.Component<'shared.link', true>;
-  };
+  attributes: {};
 }
 
 export interface GlobalComponentsHeader extends Schema.Component {
