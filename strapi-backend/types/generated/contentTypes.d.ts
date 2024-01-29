@@ -833,6 +833,11 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
           versioned: true;
         };
       }>;
+    parent: Attribute.Relation<
+      'api::data-page.data-page',
+      'oneToOne',
+      'api::data-page.data-page'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1029,6 +1034,58 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
+export interface ApiTestTest extends Schema.CollectionType {
+  collectionName: 'tests';
+  info: {
+    singularName: 'test';
+    pluralName: 'tests';
+    displayName: 'Test';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
+export interface ApiWebsiteWebsite extends Schema.CollectionType {
+  collectionName: 'websites';
+  info: {
+    singularName: 'website';
+    pluralName: 'websites';
+    displayName: 'Website';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    Name: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::website.website',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::website.website',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1053,6 +1110,8 @@ declare module '@strapi/types' {
       'api::new.new': ApiNewNew;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
+      'api::test.test': ApiTestTest;
+      'api::website.website': ApiWebsiteWebsite;
     }
   }
 }

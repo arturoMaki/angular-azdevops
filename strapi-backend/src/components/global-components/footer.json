@@ -5,11 +5,5 @@
     "description": ""
   },
   "options": {},
-  "attributes": {
-    "Link": {
-      "type": "component",
-      "repeatable": true,
-      "component": "shared.link"
-    }
-  }
+  "attributes": {}
 }

@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigation_items",
+  "info": {
+    "singularName": "navigation-item",
+    "pluralName": "navigation-items",
+    "displayName": "NavigationItem",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InternalName": {
+      "type": "string"
+    },
+    "ExternalName": {
+      "type": "string"
+    },
+    "main_link": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::link.link"
+    },
+    "navigation_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::link.link"
+    },
+    "navigation_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation-item.navigation-item"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "navigations",
+  "info": {
+    "singularName": "navigation",
+    "pluralName": "navigations",
+    "displayName": "Navigation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InternalName": {
+      "type": "string"
+    },
+    "ExternalName": {
+      "type": "string"
+    },
+    "navigation_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation-item.navigation-item"
+    }
+  }
+}

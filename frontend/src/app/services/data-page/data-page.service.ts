@@ -36,17 +36,10 @@ export class DataPageService {
 
   constructor(private _http: HttpClient) {}
 
-  public getDataPages$(): Observable<StrapiResponse<any[]>> {
-    const params = new HttpParams().append(
-      'populate[parent][populate][0]',
-      'parent'
-    );
+  public getDataPages$(): Observable<StrapiResponse<any>> {
+    const endpoint = '/websites/the-times';
 
-    const endpoint = '/data-pages';
-
-    return this._http.get<StrapiResponse<any[]>>(`${this._apiUrl}${endpoint}`, {
-      params,
-    });
+    return this._http.get<StrapiResponse<any>>(`${this._apiUrl}${endpoint}`);
   }
 
   public buildTree(nodes: Page[], parentName: string | null = null): Node[] {

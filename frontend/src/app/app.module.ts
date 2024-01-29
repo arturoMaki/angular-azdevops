@@ -33,8 +33,7 @@ export function initializeDynamicRouting(
   return () =>
     myService.getDataPages$().pipe(
       take(1),
-      map((res) => res?.data),
-      map((pages) => pages.filter((page) => !page.attributes.Static)),
+      map((res) => res?.data?.attributes?.data_pages?.data),
       tap((pages) => {
         router.resetConfig(myService.buildTree(pages));
       })

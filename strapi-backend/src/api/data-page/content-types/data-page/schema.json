@@ -22,15 +22,6 @@
     "Slug": {
       "type": "string"
     },
-    "Static": {
-      "pluginOptions": {
-        "versions": {
-          "versioned": true
-        }
-      },
-      "type": "boolean",
-      "required": true
-    },
     "parent": {
       "type": "relation",
       "relation": "oneToOne",

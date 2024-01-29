@@ -1,0 +1,52 @@
+{
+  "kind": "collectionType",
+  "collectionName": "links",
+  "info": {
+    "singularName": "link",
+    "pluralName": "links",
+    "displayName": "Link",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "InternalName": {
+      "type": "string",
+      "required": true
+    },
+    "ExternalName": {
+      "type": "string",
+      "required": true
+    },
+    "URL": {
+      "type": "string"
+    },
+    "Icon": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "Target": {
+      "type": "enumeration",
+      "enum": [
+        "_self",
+        "_blank",
+        "_parent",
+        "_top"
+      ]
+    },
+    "data_page": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::data-page.data-page"
+    }
+  }
+}
