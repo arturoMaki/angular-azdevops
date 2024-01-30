@@ -16,4 +16,9 @@ export default ({ env }) => ({
   seo: {
     enabled: true,
   },
+  menus: {
+    config: {
+      maxDepth: 3,
+    },
+  },
 });
