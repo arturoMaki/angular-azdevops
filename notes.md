@@ -89,6 +89,8 @@ The _@strapi-community/dockerize_ package is a CLI tool that can be used to gene
 
 - Run `docker-compose up -d` to run containers.
 
+**Important** types/generated files are automatically generated inside the container but not exported to the source-code. TODO
+
 ### Media Assets in Strapi
 
 [Managing Assets](https://docs.strapi.io/user-docs/media-library/managing-assets)
@@ -228,3 +230,7 @@ CORS_ORIGIN=http://your-domain,http://another-domain,
 ### Add SEO Plugin
 
 [Docu](https://market.strapi.io/plugins/@strapi-plugin-seo)
+
+### Add Menu Plugin
+
+[Docu](https://market.strapi.io/plugins/strapi-plugin-menus)
