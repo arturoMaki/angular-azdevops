@@ -101,26 +101,28 @@ Main Feature:
 - Customizable: Via admin panel or directly extending with plugins and customizations.
 - Flexible: Consume it from any client, SPA, or mobile app, as well as via REST or GraphQL.
 
+#### Strapi Limitations:
+
 - All-in-One Solution:
   Strapi is **NOT** an all-in-one. Strapi is **NOT** a full-fledged content management system that includes both a backend for content management and a frontend for website presentation. It does **NOT** include a built-in frontend for presentation.
 
-- Multi-sites Limitations:
+- Multi-sites:
   Unfortunately, handling multiple sites within a single Strapi instance is not supported in Strapi-V4 as of 02/2024. There is no built-in multi-tenancy plugin available in the latest version.
   [For further details, refer to the Official Documentation-Item-6](https://strapi.io/blog/strapi-support-most-frequently-asked-questions-on-the-website)
   While there are some workarounds accessible, such as utilizing the strapi-plugin-multi-tenant or creating different instances based on a single code-source, it's important to note that these workarounds might not provide a straightforward and maintainable solution. If your business requirements necessitate the management of multiple sites, it's advisable to consider alternative CMS options better suited to handle this specific use case, as Strapi may not be the optimal choice in such scenarios.
 
 
 - Learning Curve:
-Strapi, as a developer-first CMS, with its extensive features and flexibility, might have a steeper learning curve for newcomers or those not familiar with headless CMS concepts. It's important to allocate time for the learning process, especially for **non-developers**.
+  Strapi, as a developer-first CMS, with its extensive features and flexibility, might have a steeper learning curve for newcomers or those not familiar with headless CMS concepts. It's important to allocate time for the learning process, especially for **non-developers**.
 
 - Plugin Usage and Compatibility:
-    Strapi has a growing community and there are bunch of non-offiacial free plugin. However, Strapi doesn't garanty that those plugin work as expected. It is also important to consider that, as the platform evolves, plugin compatibility might be affected.
+  Strapi has a growing community and there are bunch of non-offiacial free plugin. However, Strapi doesn't garanty that those plugin work as expected. It is also important to consider that, as the platform evolves, plugin compatibility might be affected.
 
 - Content Preview:
-Compared to some traditional CMS solutions, Strapi might have limitations in providing a built-in content preview functionality. Previewing content changes before publishing may require additional custom development.
+  Compared to some traditional CMS solutions, Strapi might have limitations in providing a built-in content preview functionality. Previewing content changes before publishing may require additional custom development.
 
 - Built-in Search:
-Strapi does not provide a built-in search feature out of the box. You may need to integrate third-party search solutions or develop a custom search feature.
+  Strapi does not provide a built-in search feature out of the box. You may need to integrate third-party search solutions or develop a custom search feature.
 
 - Real-time Collaboration:
-Strapi may not be the best choice for projects that require real-time collaboration on content editing. While it supports collaborative content management, some traditional CMS platforms may have more advanced real-time collaboration features
+  Strapi may not be the best choice for projects that require real-time collaboration on content editing. While it supports collaborative content management, some traditional CMS platforms may have more advanced real-time collaboration features
