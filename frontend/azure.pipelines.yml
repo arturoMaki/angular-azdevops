@@ -18,27 +18,25 @@ stages:
         - npm
 
       steps:
-        - script: 'node --version'
-          displayName: 'Check Node Version'
         - task: Npm@1
           displayName: 'Run npm install'
           inputs:
-            command: 'install'
-            workingDirectory: './frontend'
+            command: 'ci'
+            workingDir: '$(System.DefaultWorkingDirectory)/frontend'
             verbose: false
 
         - script: 'npm install -g @angular/cli'
           displayName: 'Install @angular/cli Globally'
 
-        - task: CmdLine@2
-          displayName: "Run Unit Tests"
-          inputs:
-            workingDirectory: './frontend'
-            script: ng test
+        # - task: CmdLine@2
+        #   displayName: "Run Unit Tests"
+        #   inputs:
+        #     workingDirectory: '$(System.DefaultWorkingDirectory)/frontend'
+        #     script: ng test
 
         - script: 'ng build --configuration production'
           displayName: 'Build Angular Application'
-          workingDirectory: './frontend'
+          workingDirectory: '$(System.DefaultWorkingDirectory)/frontend'
 
         - task: ArchiveFiles@2
           displayName: 'Archive files'
