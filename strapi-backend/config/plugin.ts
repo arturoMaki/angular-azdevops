@@ -21,4 +21,7 @@ export default ({ env }) => ({
       maxDepth: 3,
     },
   },
+  'multi-tenant': {
+    enabled: true,
+  },
 });
