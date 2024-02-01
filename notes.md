@@ -35,9 +35,8 @@
     Strapi has a supportive community and offers both community and enterprise plugins, allowing for extensive customization and feature extension.
 
 - Cannot Be Done:
-
   - Strapi is an Open-Source Headless CMS:
-    Strapi is designed as a headless and decoupled CMS. While it's easily customizable, large-scale projects may require community and development efforts. It may not be recommended for very large projects.
+    While it's easily customizable, large-scale projects may require community and development efforts, and Strapi may not be the recommended choice for very large projects.
 
   - Not an All-in-One Solution:
     Strapi focuses on content management and APIs. It does not provide a presentation layer or act as an all-in-one solution. It does not include a built-in page builder.
@@ -81,7 +80,12 @@
 
 The _@strapi-community/dockerize_ package is a CLI tool that can be used to generate a Dockerfile and docker-compose.yml file for a Strapi project. [Check it](https://docs.strapi.io/dev-docs/installation/docker)
 
-- Switch DockerDesktop to Linux containers
+- Switch DockerDesktop to Linux containers (Windows PowerShell 7 specific):
+
+  ```powershell
+  # Run the following command in Windows PowerShell 7 as an Admin
+  Switch-DockerDesktop -Linux
+  ```
 
 - Open PowerShell 7 as an Admin
 
@@ -192,9 +196,12 @@ docker restart 041d0c86c241
 
 ### Explore contaniner MySQL_DB
 
+This command is for accessing a bash shell inside a container and may not work on all systems:
+
 ```sh
 docker exec -it <db-container-id> /bin/bash
 mysql --host=<ENV.DATABASE_HOST> --user=<ENV.DATABASE_USERNAME> --password=<ENV.DATABASE_PASSWORD> <ENV.DATABASE_NAME>
+# mysql --host=localhost --user=admin --password=Admin24 strapiDB
 SHOW DATABASES;
 USE <DATABASE_NAME>
 SHOW TABLES;
