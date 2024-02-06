@@ -116,7 +116,7 @@ Main Feature:
   Strapi, as a developer-first CMS, with its extensive features and flexibility, might have a steeper learning curve for newcomers or those not familiar with headless CMS concepts. It's important to allocate time for the learning process, especially for **non-developers**.
 
 - Plugin Usage and Compatibility:
-  Strapi has a growing community and there are bunch of non-offiacial free plugin. However, Strapi doesn't garanty that those plugin work as expected. It is also important to consider that, as the platform evolves, plugin compatibility might be affected.
+  Strapi has a growing community and there are bunch of non-official free plugin. However, Strapi doesn't garanty that those plugin work as expected. It is also important to consider that, as the platform evolves, plugin compatibility might be affected.
 
 - Content Preview:
   Compared to some traditional CMS solutions, Strapi might have limitations in providing a built-in content preview functionality. Previewing content changes before publishing may require additional custom development.
