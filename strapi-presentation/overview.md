@@ -3,10 +3,10 @@
 | Vendor                                                    | [Strapi, Paris, France](https://strapi.io/)
 | Exist since                                               | [2015](https://strapi.io/blog/introducing-strapi-3.0-the-most-advanced-open-source-headless-cms)
 | Latest version                                            | [v4.15.4](https://github.com/strapi/strapi/releases)
-| Vendor product support available                         | ✔️ With Support: The level of support depends on the plan: What is supported by the Strapi team. Community Support for Free subs. The level of support depends on the plan. Ex: Prem 24/7 support. [How to get help and support](https://strapi.io/support). Community Support for Free subs.
+| Vendor product support available                         | ✔️ The level of support depends on the plan: What is supported by the Strapi team. Community Support for Free subs. The level of support depends on the plan. Ex: Prem 24/7 support. [How to get help and support](https://strapi.io/support). Community Support for Free subs.
 | License / License model                                  | Strapi is open source. However, some features are only accessible with an enterprise subscription. In those cases, a license is needed. [Strapi License](https://github.com/strapi/strapi/blob/a76b557047e9ef1c168dbf1b6cf879bcc3022de6/packages/core/admin/ee/LICENSE) [How to install your Strapi Enterprise License](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/installation/enterprise-license.html). Subscription plans for Strapi Cloud ([Free Trial](https://strapi.io/pricing), [Pro](https://strapi.io/pricing), [Team](https://strapi.io/pricing))
 | Costs                                                    | Enterpise Prices are not public
-| Best used for                                           | - Middle or large size projects (Websites, Applications)
+| Best used for                                           | - Middle or large size projects (Websites, WebApplications Applications)
 | | - Decouple approach between frontend and CMS
 | | - Headless architecture and API first approach
 | | - Self-hosting
@@ -19,9 +19,9 @@
 | Release cycle                                           | Continuous
 | Platform language/framework                             | Node.js framework: [Koa.js](https://koajs.com/)                                                                                     |
 | Support for security issues                             | ✔️ Community and subscription-based support available.                                                                                     |
-| Frontend language support | Any language that consume API. For JS there is a [Official SDK](https://strapi-sdk-js.netlify.app/getting-started/setup)                                                                                  |
+| Frontend language support | Any client that consume Rest-APIs. For Javascript: [Official SDK](https://strapi-sdk-js.netlify.app/getting-started/setup)                                                                                  |
 | OpenAPI support                            | ✔️ [Strapi Documentation Plugin](https://strapi.io/documentation/developer-docs/latest/getting-started/introduction.html#openapi)
-| Hosting                                                   | [Strapi SaaS Cloud](https://strapi.io/cloud)
+| Hosting                                                   | [Strapi Cloud](https://strapi.io/cloud)
 | Self-hosting possible                                   | ✔️ [Docker Deployment](https://docs.strapi.io/dev-docs/deployment/hosting-guides).
 | Self-hosting support for container     | ✔️ [Docker Community support](https://strapi.io/documentation/developer-docs/latest/setup-deployment-guides/deployment/hosting-guides/docker.html)
 | Scalability modes                                       | CDN for performance scaling                                                                                                           |

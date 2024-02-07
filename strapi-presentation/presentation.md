@@ -19,9 +19,6 @@ Strapi is an open-source Node.js headless CMS fully customizable and developer-f
     - User-Friendly Admin Dashboard:
     Strapi comes with a customizable admin panel that makes it easy for non-technical users to manage content. The intuitive interface allows content editors to create, update, and delete content without the need for developer intervention.
 
-    - Authentication and Authorization:
-    Strapi includes robust user authentication and role-based access control. Developers can easily define user roles and permissions, ensuring that sensitive content and functionalities are secure.
-
     - Plugin System:
     The extensibility of Strapi is amplified through its plugin system. Developers can enhance functionality by installing pre-built plugins or creating custom ones, tailoring the CMS to the specific needs of the project.
 
@@ -69,7 +66,7 @@ Main Feature:
 - Media Library
     - Upload and organize media files.
     - View and manage metadata for media assets.
-    - Utilize media assets in content entries.
+    - Use media assets in content entries.
 
 ![Media-Library](./photos/media-library.png)
 
@@ -98,7 +95,7 @@ Main Feature:
 
 - Open source: Available in GitHub and supported by hundreds of contributors.
 - Self-hosted: Gives you full control of your data and privacy.
-- Customizable: Via admin panel or directly extending with plugins and customizations.
+- Customizable: Via admin panel or directly extending with plugins and backend-customizations.
 - Flexible: Consume it from any client, SPA, or mobile app, as well as via REST or GraphQL.
 
 #### Strapi Limitations:
