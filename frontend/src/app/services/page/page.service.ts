@@ -9,7 +9,7 @@ import { StrapiResponse } from 'strapi-sdk-js';
   providedIn: 'root',
 })
 export class PageService {
-  private _apiUrl = environment.strapiApiBaseUrl;
+  private _strapiApiBaseUrl = environment.strapiApiBaseUrl;
 
   private getLastSegment(path: string): string | null {
     const match = path.match(/\/([^/]+\/?)$/);
@@ -23,10 +23,10 @@ export class PageService {
 
     const slug = this.getLastSegment(url);
 
-    const apiUrl = `${this._apiUrl}${endpoint}${slug}`;
+    const strapiApiBaseUrl = `${this._strapiApiBaseUrl}${endpoint}${slug}`;
 
     return this._http
-      .get<StrapiResponse<BaseStrapiData<any>>>(apiUrl)
+      .get<StrapiResponse<BaseStrapiData<any>>>(strapiApiBaseUrl)
       .pipe(map((res) => res.data.attributes.components));
   }
 }

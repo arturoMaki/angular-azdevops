@@ -24,10 +24,10 @@ export class NewsComponent {
     map((res) => res.data)
   );
 
-  private _strapiUrl = environment.strapiBaseUrl;
+  private _strapiBaseUrl = environment.strapiBaseUrl;
 
   public getImage(imageUrl: string) {
-    return `${this._strapiUrl}${imageUrl}`;
+    return `${this._strapiBaseUrl}${imageUrl}`;
   }
 
   constructor(private readonly _newService: NewService) {}

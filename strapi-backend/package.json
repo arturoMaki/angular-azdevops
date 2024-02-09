@@ -10,6 +10,8 @@
   "scripts": {
     "build": "strapi build",
     "develop": "strapi develop",
+    "generate-types": "npm run remove-dist && npm run strapi ts:generate-types --debug",
+    "remove-dist": "rd .\\dist /s /q",
     "start": "strapi start",
     "strapi": "strapi"
   },
@@ -25,9 +27,7 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "5.3.4",
-    "strapi-plugin-menus": "^1.6.0",
     "strapi-plugin-multi-tenant": "^1.0.4",
-    "strapi-plugin-navigation": "^2.3.2",
     "strapi-plugin-slugify": "^2.3.8",
     "styled-components": "5.3.3"
   },

@@ -14,12 +14,6 @@
   "attributes": {
     "Name": {
       "type": "string"
-    },
-    "news": {
-      "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::new.new",
-      "inversedBy": "news_categories"
     }
   }
 }

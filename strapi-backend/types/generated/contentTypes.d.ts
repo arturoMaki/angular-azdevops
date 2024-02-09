@@ -768,44 +768,34 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
-export interface PluginMenusMenu extends Schema.CollectionType {
-  collectionName: 'menus';
+export interface PluginMultiTenantOrganization extends Schema.CollectionType {
+  collectionName: 'organizations';
   info: {
-    name: 'Menu';
-    displayName: 'Menu';
-    singularName: 'menu';
-    pluralName: 'menus';
-    tableName: 'menus';
+    singularName: 'organization';
+    pluralName: 'organizations';
+    displayName: 'Organization';
   };
   options: {
     draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
+    comment: '';
   };
   attributes: {
-    title: Attribute.String & Attribute.Required;
-    slug: Attribute.UID<'plugin::menus.menu', 'title'> & Attribute.Required;
-    items: Attribute.Relation<
-      'plugin::menus.menu',
+    name: Attribute.String;
+    userGroups: Attribute.Relation<
+      'plugin::multi-tenant.organization',
       'oneToMany',
-      'plugin::menus.menu-item'
+      'plugin::multi-tenant.user-group'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::menus.menu',
+      'plugin::multi-tenant.organization',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::menus.menu',
+      'plugin::multi-tenant.organization',
       'oneToOne',
       'admin::user'
     > &
@@ -813,52 +803,50 @@ export interface PluginMenusMenu extends Schema.CollectionType {
   };
 }
 
-export interface PluginMenusMenuItem extends Schema.CollectionType {
-  collectionName: 'menu_items';
+export interface PluginMultiTenantUserGroup extends Schema.CollectionType {
+  collectionName: 'user_groups';
   info: {
-    name: 'MenuItem';
-    displayName: 'Menu Item';
-    singularName: 'menu-item';
-    pluralName: 'menu-items';
-    tableName: 'menu_items';
+    singularName: 'user-group';
+    pluralName: 'user-groups';
+    displayName: 'UserGroup';
   };
   options: {
     draftAndPublish: false;
-  };
-  pluginOptions: {
-    'content-manager': {
-      visible: false;
-    };
-    'content-type-builder': {
-      visible: false;
-    };
+    comment: '';
   };
   attributes: {
-    order: Attribute.Integer;
-    title: Attribute.String & Attribute.Required;
-    url: Attribute.String;
-    target: Attribute.Enumeration<['_blank', '_parent', '_self', '_top']>;
-    root_menu: Attribute.Relation<
-      'plugin::menus.menu-item',
+    name: Attribute.String;
+    users: Attribute.Relation<
+      'plugin::multi-tenant.user-group',
+      'oneToMany',
+      'plugin::users-permissions.user'
+    >;
+    organization: Attribute.Relation<
+      'plugin::multi-tenant.user-group',
       'manyToOne',
-      'plugin::menus.menu'
+      'plugin::multi-tenant.organization'
     > &
       Attribute.Required;
     parent: Attribute.Relation<
-      'plugin::menus.menu-item',
-      'oneToOne',
-      'plugin::menus.menu-item'
+      'plugin::multi-tenant.user-group',
+      'manyToOne',
+      'plugin::multi-tenant.user-group'
+    >;
+    children: Attribute.Relation<
+      'plugin::multi-tenant.user-group',
+      'oneToMany',
+      'plugin::multi-tenant.user-group'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
-      'plugin::menus.menu-item',
+      'plugin::multi-tenant.user-group',
       'oneToOne',
       'admin::user'
     > &
       Attribute.Private;
     updatedBy: Attribute.Relation<
-      'plugin::menus.menu-item',
+      'plugin::multi-tenant.user-group',
       'oneToOne',
       'admin::user'
     > &
@@ -916,11 +904,6 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
   options: {
     draftAndPublish: true;
   };
-  pluginOptions: {
-    versions: {
-      versioned: true;
-    };
-  };
   attributes: {
     Title: Attribute.String;
     Slug: Attribute.String;
@@ -944,15 +927,6 @@ export interface ApiDataPageDataPage extends Schema.CollectionType {
       'admin::user'
     > &
       Attribute.Private;
-    versions: Attribute.Relation<
-      'api::data-page.data-page',
-      'manyToMany',
-      'api::data-page.data-page'
-    >;
-    vuid: Attribute.String;
-    versionNumber: Attribute.Integer & Attribute.DefaultTo<1>;
-    versionComment: Attribute.String;
-    isVisibleInListView: Attribute.Boolean & Attribute.DefaultTo<true>;
   };
 }
 
@@ -1000,8 +974,8 @@ export interface ApiLinkLink extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    InternalName: Attribute.String & Attribute.Required;
-    ExternalName: Attribute.String & Attribute.Required;
+    Name: Attribute.String & Attribute.Required;
+    DisplayName: Attribute.String & Attribute.Required;
     URL: Attribute.String;
     Icon: Attribute.Media;
     Target: Attribute.Enumeration<['_self', '_blank', '_parent', '_top']>;
@@ -1020,6 +994,46 @@ export interface ApiLinkLink extends Schema.CollectionType {
   };
 }
 
+export interface ApiNavigationLinkNavigationLink extends Schema.CollectionType {
+  collectionName: 'navigation_links';
+  info: {
+    singularName: 'navigation-link';
+    pluralName: 'navigation-links';
+    displayName: 'NavigationLink';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    main: Attribute.Relation<
+      'api::navigation-link.navigation-link',
+      'oneToOne',
+      'api::link.link'
+    >;
+    Name: Attribute.String;
+    parent: Attribute.Relation<
+      'api::navigation-link.navigation-link',
+      'oneToOne',
+      'api::navigation-link.navigation-link'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::navigation-link.navigation-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::navigation-link.navigation-link',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
 
 export interface ApiNewNew extends Schema.CollectionType {
   collectionName: 'news';
@@ -1035,9 +1049,6 @@ export interface ApiNewNew extends Schema.CollectionType {
   pluginOptions: {
     i18n: {
       localized: true;
-    };
-    versions: {
-      versioned: true;
     };
   };
   attributes: {
@@ -1061,7 +1072,7 @@ export interface ApiNewNew extends Schema.CollectionType {
       }>;
     news_categories: Attribute.Relation<
       'api::new.new',
-      'manyToMany',
+      'oneToMany',
       'api::news-category.news-category'
     >;
     Image: Attribute.Media &
@@ -1077,11 +1088,6 @@ export interface ApiNewNew extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<'api::new.new', 'oneToOne', 'admin::user'> &
       Attribute.Private;
-    versions: Attribute.Relation<'api::new.new', 'manyToMany', 'api::new.new'>;
-    vuid: Attribute.String;
-    versionNumber: Attribute.Integer & Attribute.DefaultTo<1>;
-    versionComment: Attribute.String;
-    isVisibleInListView: Attribute.Boolean & Attribute.DefaultTo<true>;
     localizations: Attribute.Relation<
       'api::new.new',
       'oneToMany',
@@ -1104,11 +1110,6 @@ export interface ApiNewsCategoryNewsCategory extends Schema.CollectionType {
   };
   attributes: {
     Name: Attribute.String;
-    news: Attribute.Relation<
-      'api::news-category.news-category',
-      'manyToMany',
-      'api::new.new'
-    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1141,7 +1142,7 @@ export interface ApiPagePage extends Schema.CollectionType {
   attributes: {
     DisplayName: Attribute.String & Attribute.Required & Attribute.Unique;
     components: Attribute.DynamicZone<
-      ['components.section', 'components.alert', 'components.card']
+      ['components.card', 'components.tab-group']
     >;
     data_page: Attribute.Relation<
       'api::page.page',
@@ -1159,24 +1160,38 @@ export interface ApiPagePage extends Schema.CollectionType {
   };
 }
 
-export interface ApiTestTest extends Schema.CollectionType {
-  collectionName: 'tests';
+export interface ApiUiNavigationUiNavigation extends Schema.CollectionType {
+  collectionName: 'ui_navigations';
   info: {
-    singularName: 'test';
-    pluralName: 'tests';
-    displayName: 'Test';
+    singularName: 'ui-navigation';
+    pluralName: 'ui-navigations';
+    displayName: 'UINavigation';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
     Name: Attribute.String;
+    navigation_links: Attribute.Relation<
+      'api::ui-navigation.ui-navigation',
+      'oneToMany',
+      'api::navigation-link.navigation-link'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    createdBy: Attribute.Relation<
+      'api::ui-navigation.ui-navigation',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
-    updatedBy: Attribute.Relation<'api::test.test', 'oneToOne', 'admin::user'> &
+    updatedBy: Attribute.Relation<
+      'api::ui-navigation.ui-navigation',
+      'oneToOne',
+      'admin::user'
+    > &
       Attribute.Private;
   };
 }
@@ -1235,16 +1250,17 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
-      'plugin::menus.menu': PluginMenusMenu;
-      'plugin::menus.menu-item': PluginMenusMenuItem;
+      'plugin::multi-tenant.organization': PluginMultiTenantOrganization;
+      'plugin::multi-tenant.user-group': PluginMultiTenantUserGroup;
       'plugin::slugify.slug': PluginSlugifySlug;
       'api::data-page.data-page': ApiDataPageDataPage;
       'api::global.global': ApiGlobalGlobal;
       'api::link.link': ApiLinkLink;
+      'api::navigation-link.navigation-link': ApiNavigationLinkNavigationLink;
       'api::new.new': ApiNewNew;
       'api::news-category.news-category': ApiNewsCategoryNewsCategory;
       'api::page.page': ApiPagePage;
-      'api::test.test': ApiTestTest;
+      'api::ui-navigation.ui-navigation': ApiUiNavigationUiNavigation;
       'api::website.website': ApiWebsiteWebsite;
     }
   }

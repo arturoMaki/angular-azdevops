@@ -1,0 +1,15 @@
+<a
+  *ngIf="!navItem?.children?.length; else menuButton"
+  mat-menu-item
+  [href]="navItem?.href"
+  [target]="navItem?.target"
+  >{{ navItem?.title }}</a
+>
+<ng-template #menuButton>
+  <button mat-menu-item [matMenuTriggerFor]="menu">
+    {{ navItem?.title }}
+  </button>
+  <mat-menu #menu="matMenu">
+    <ng-content></ng-content>
+  </mat-menu>
+</ng-template>

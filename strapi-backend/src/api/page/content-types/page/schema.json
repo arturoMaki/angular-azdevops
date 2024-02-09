@@ -20,9 +20,8 @@
     "components": {
       "type": "dynamiczone",
       "components": [
-        "components.section",
-        "components.alert",
-        "components.card"
+        "components.card",
+        "components.tab-group"
       ]
     },
     "data_page": {

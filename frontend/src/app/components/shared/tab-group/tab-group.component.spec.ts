@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertComponent } from './alert.component';
+import { TabGroupComponent } from './tab-group.component';
 
-describe('AlertComponent', () => {
-  let component: AlertComponent;
-  let fixture: ComponentFixture<AlertComponent>;
+describe('TabGroupComponent', () => {
+  let component: TabGroupComponent;
+  let fixture: ComponentFixture<TabGroupComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [AlertComponent]
+      declarations: [TabGroupComponent]
     });
-    fixture = TestBed.createComponent(AlertComponent);
+    fixture = TestBed.createComponent(TabGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

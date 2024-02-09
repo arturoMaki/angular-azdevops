@@ -1,8 +1,8 @@
 <div *ngIf="components$ | async as components">
   <div *ngFor="let component of components; let index = index">
     <div [ngSwitch]="component.__component">
-      <ng-container *ngSwitchCase="'components.alert'">
-        <app-alert [content]="component.Content" />
+      <ng-container *ngSwitchCase="'components.tab-group'">
+        <app-tab-group [items]="component.component" />
       </ng-container>
 
       <ng-container *ngSwitchCase="'components.card'">
@@ -15,11 +15,7 @@
                 .formats.large.url
             )
           "
-        >
-          <button nbButton>
-            <a nbLink routerLink="/home">RETURN TO HOME</a>
-          </button></app-card
-        >
+        ></app-card>
       </ng-container>
     </div>
   </div>

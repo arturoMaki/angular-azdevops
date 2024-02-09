@@ -16,12 +16,6 @@ interface Page {
   };
 }
 
-interface TreeNode {
-  title: string;
-  slug: string;
-  children?: TreeNode[];
-}
-
 interface Node {
   path: string;
   component: typeof BasePageComponent;
@@ -32,14 +26,16 @@ interface Node {
   providedIn: 'root',
 })
 export class DataPageService {
-  private _apiUrl = environment.strapiApiBaseUrl;
+  private _strapiApiBaseUrl = environment.strapiApiBaseUrl;
 
   constructor(private _http: HttpClient) {}
 
   public getDataPages$(): Observable<StrapiResponse<any>> {
     const endpoint = '/websites/the-times';
 
-    return this._http.get<StrapiResponse<any>>(`${this._apiUrl}${endpoint}`);
+    return this._http.get<StrapiResponse<any>>(
+      `${this._strapiApiBaseUrl}${endpoint}`
+    );
   }
 
   public buildTree(nodes: Page[], parentName: string | null = null): Node[] {

@@ -13,9 +13,6 @@
   "pluginOptions": {
     "i18n": {
       "localized": true
-    },
-    "versions": {
-      "versioned": true
     }
   },
   "attributes": {
@@ -45,9 +42,8 @@
     },
     "news_categories": {
       "type": "relation",
-      "relation": "manyToMany",
-      "target": "api::news-category.news-category",
-      "mappedBy": "news"
+      "relation": "oneToMany",
+      "target": "api::news-category.news-category"
     },
     "Image": {
       "type": "media",

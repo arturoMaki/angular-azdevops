@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "InternalName": {
+    "Name": {
       "type": "string",
       "required": true
     },
-    "ExternalName": {
+    "DisplayName": {
       "type": "string",
       "required": true
     },

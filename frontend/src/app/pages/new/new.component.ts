@@ -25,10 +25,10 @@ export class NewComponent {
     map((data) => data.attributes)
   );
 
-  private _strapiUrl = environment.strapiBaseUrl;
+  private _strapiBaseUrl = environment.strapiBaseUrl;
 
   public getImage(imageUrl: string | undefined) {
-    return `${this._strapiUrl}${imageUrl || ''}`;
+    return `${this._strapiBaseUrl}${imageUrl || ''}`;
   }
 
   ngOnInit() {}

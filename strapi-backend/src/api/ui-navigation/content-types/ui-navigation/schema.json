@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "ui_navigations",
+  "info": {
+    "singularName": "ui-navigation",
+    "pluralName": "ui-navigations",
+    "displayName": "UINavigation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Name": {
+      "type": "string"
+    },
+    "navigation_links": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::navigation-link.navigation-link"
+    }
+  }
+}

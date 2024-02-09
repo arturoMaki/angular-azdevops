@@ -5,11 +5,5 @@
     "description": ""
   },
   "options": {},
-  "attributes": {
-    "data_pages": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::data-page.data-page"
-    }
-  }
+  "attributes": {}
 }

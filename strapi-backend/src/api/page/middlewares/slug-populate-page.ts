@@ -32,6 +32,9 @@ export default (config, { strapi }) => {
             populate: "*",
             Image: "*",
           },
+          component: {
+            populate: "*",
+          },
         },
       },
     };

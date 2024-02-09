@@ -14,10 +14,10 @@ export class BasePageComponent {
     .getPage$(this._router.url)
     .pipe(take(1));
 
-  private _strapiUrl = environment.strapiBaseUrl;
+  private _strapiBaseUrl = environment.strapiBaseUrl;
 
   public getImage(imageUrl: string | undefined) {
-    return `${this._strapiUrl}${imageUrl || ''}`;
+    return `${this._strapiBaseUrl}${imageUrl || ''}`;
   }
 
   constructor(

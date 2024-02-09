@@ -1,6 +1,6 @@
 export default ({ env }) => ({
   "content-versioning": {
-    enabled: true,
+    enabled: false,
   },
   slugify: {
     enabled: true,
@@ -16,12 +16,7 @@ export default ({ env }) => ({
   seo: {
     enabled: true,
   },
-  menus: {
-    config: {
-      maxDepth: 3,
-    },
-  },
-  'multi-tenant': {
-    enabled: true,
+  "multi-tenant": {
+    enabled: false,
   },
 });

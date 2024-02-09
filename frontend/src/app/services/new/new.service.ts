@@ -10,7 +10,7 @@ import { BaseStrapiData } from 'src/common/strapi.interface';
   providedIn: 'root',
 })
 export class NewService {
-  private _apiUrl = environment.strapiApiBaseUrl;
+  private _strapiApiBaseUrl = environment.strapiApiBaseUrl;
 
   constructor(private _http: HttpClient) {}
 
@@ -21,7 +21,7 @@ export class NewService {
       .append('populate', 'Image');
 
     return this._http.get<StrapiResponse<BaseStrapiData<New>[]>>(
-      `${this._apiUrl}${endpoint}`,
+      `${this._strapiApiBaseUrl}${endpoint}`,
       {
         params: params,
       }
@@ -36,7 +36,7 @@ export class NewService {
       .append('populate', 'news_categories')
       .append('populate', 'Image');
 
-    const url = `${this._apiUrl}${endpoint}/${newId}`;
+    const url = `${this._strapiApiBaseUrl}${endpoint}/${newId}`;
 
     return this._http.get<StrapiResponse<BaseStrapiData<New>>>(url, {
       params,

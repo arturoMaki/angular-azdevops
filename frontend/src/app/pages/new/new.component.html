@@ -1,22 +1,7 @@
-<nb-card *ngIf="new$ | async" status="success">
-  <nb-card-header>{{ (new$ | async)?.Title }}</nb-card-header>
-  <nb-card-body>
-    <h6>{{ (new$ | async)?.Subtitle }}</h6>
-    <img
-      *ngIf="(new$ | async)?.Image"
-      sizes="(max-width: 320px) 280px,
-      (max-width: 576px) 520px,
-      (max-width: 768px) 720px,
-      1140px"
-      [src]="
-        getImage((new$ | async)?.Image?.data?.attributes?.formats?.large?.url)
-      "
-      alt="Responsive Image"
-    />
-  </nb-card-body>
-  <nb-card-footer
-    ><button nbButton>
-      <a nbLink routerLink="/news">RETURN</a>
-    </button></nb-card-footer
-  >
-</nb-card>
+<ng-container *ngIf="new$ | async as new">
+  <app-card
+    [title]="new?.Title"
+    [subtitle]="new?.Subtitle"
+    [image]="getImage(new?.Image?.data?.attributes?.formats?.large?.url)"
+  ></app-card>
+</ng-container>

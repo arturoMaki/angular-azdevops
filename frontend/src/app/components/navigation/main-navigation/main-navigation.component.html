@@ -1,0 +1,26 @@
+<div *ngIf="mainNavigationItems$ | async as navItems">
+  <ng-container *ngFor="let navItem of navItems">
+    <a
+      *ngIf="!navItem?.children?.length; else menuButton"
+      mat-button
+      [href]="navItem?.href"
+      [target]="navItem?.target"
+      >{{ navItem?.title }}</a
+    >
+    <ng-template #menuButton>
+      <button mat-button [matMenuTriggerFor]="menu">
+        {{ navItem?.title }}
+      </button>
+      <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let childLink of navItem?.children">
+          <app-navigation-item [navItem]="childLink">
+            <ng-container *ngFor="let nestedChildLink of childLink?.children">
+              <app-navigation-item [navItem]="nestedChildLink">
+              </app-navigation-item>
+            </ng-container>
+          </app-navigation-item>
+        </ng-container>
+      </mat-menu>
+    </ng-template>
+  </ng-container>
+</div>
