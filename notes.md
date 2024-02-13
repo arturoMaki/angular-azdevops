@@ -35,6 +35,7 @@
     Strapi has a supportive community and offers both community and enterprise plugins, allowing for extensive customization and feature extension.
 
 - Cannot Be Done:
+
   - Strapi is an Open-Source Headless CMS:
     While it's easily customizable, large-scale projects may require community and development efforts, and Strapi may not be the recommended choice for very large projects.
 
@@ -121,13 +122,15 @@ From the Content-type Builder, administrators can create and manage content-type
 
 - [Autogenerate](https://docs.strapi.io/dev-docs/configurations/typescript#strapi-specific-configuration-for-typescript)
 
+- If u are running Strapi into a container, navigate to the strapi-backend folder and run `npm run generate-types`
+
 ### Copy Strapi Types in Frontend
 
 - Install @strapi/types in frontend `npm install --save-dev @strapi/types`
 
 - Run `.\copy-strapi-types-to-frontend.ps1`
 
-[Docu](https://www.youtube.com/watch?v=Gv3dAG8ktsI)
+[Docu](https://strapi.io/blog/improve-your-frontend-experience-with-strapi-types-and-type-script)
 
 ### SDK - Typescript
 
