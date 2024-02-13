@@ -1,9 +1,13 @@
 # Define paths
 $strapiTypesPath = ".\strapi-backend\types\generated\contentTypes.d.ts"
-$angularTypesPath = ".\frontend\src\app\types\generated"  # Adjust as needed
+$strapiComponentsTypesPath = ".\strapi-backend\types\generated\components.d.ts"
+$angularTypesPath = ".\frontend-ssr\src\strapi-types\"
+$angularComponentsTypesPath = ".\frontend-ssr\src\strapi-types\"
 
 # Copy the file using copy-item in PowerShell
 Copy-Item -Path $strapiTypesPath -Destination $angularTypesPath -Force
+Copy-Item -Path $strapiComponentsTypesPath -Destination $angularComponentsTypesPath -Force
+
 
 Write-Host "Types copied successfully!"
 
