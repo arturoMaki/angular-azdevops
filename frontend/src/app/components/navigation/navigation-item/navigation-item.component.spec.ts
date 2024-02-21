@@ -8,8 +8,8 @@ describe('NavigationItemComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [NavigationItemComponent]
-    });
+    imports: [NavigationItemComponent]
+});
     fixture = TestBed.createComponent(NavigationItemComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

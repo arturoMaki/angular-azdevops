@@ -8,8 +8,8 @@ describe('TabGroupComponent', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TabGroupComponent]
-    });
+    imports: [TabGroupComponent]
+});
     fixture = TestBed.createComponent(TabGroupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();

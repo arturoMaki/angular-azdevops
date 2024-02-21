@@ -3,11 +3,24 @@ import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { PageService } from 'src/app/services/page/page.service';
 import { environment } from 'src/environments/environment';
+import { CardComponent } from '../../shared/card/card.component';
+import { TabGroupComponent } from '../../shared/tab-group/tab-group.component';
+import { NgIf, NgFor, NgSwitch, NgSwitchCase, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-base-page',
-  templateUrl: './base-page.component.html',
-  styleUrls: ['./base-page.component.scss'],
+    selector: 'app-base-page',
+    templateUrl: './base-page.component.html',
+    styleUrls: ['./base-page.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        NgFor,
+        NgSwitch,
+        NgSwitchCase,
+        TabGroupComponent,
+        CardComponent,
+        AsyncPipe,
+    ],
 })
 export class BasePageComponent {
   public components$ = this.pageService

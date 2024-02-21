@@ -2,11 +2,19 @@ import { Component } from '@angular/core';
 import { map, take, tap } from 'rxjs';
 import { NewService } from 'src/app/services/new/new.service';
 import { environment } from 'src/environments/environment';
+import { CardComponent } from '../../components/shared/card/card.component';
+import { NgFor, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss'],
+    selector: 'app-news',
+    templateUrl: './news.component.html',
+    styleUrls: ['./news.component.scss'],
+    standalone: true,
+    imports: [
+        NgFor,
+        CardComponent,
+        AsyncPipe,
+    ],
 })
 export class NewsComponent {
   public newContent: string[] = [];

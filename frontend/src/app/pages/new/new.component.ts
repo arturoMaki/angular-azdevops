@@ -3,11 +3,19 @@ import { ActivatedRoute } from '@angular/router';
 import { map, switchMap, take } from 'rxjs';
 import { NewService } from 'src/app/services/new/new.service';
 import { environment } from 'src/environments/environment';
+import { CardComponent } from '../../components/shared/card/card.component';
+import { NgIf, AsyncPipe } from '@angular/common';
 
 @Component({
-  selector: 'app-new',
-  templateUrl: './new.component.html',
-  styleUrls: ['./new.component.scss'],
+    selector: 'app-new',
+    templateUrl: './new.component.html',
+    styleUrls: ['./new.component.scss'],
+    standalone: true,
+    imports: [
+        NgIf,
+        CardComponent,
+        AsyncPipe,
+    ],
 })
 export class NewComponent {
   constructor(
