@@ -3,7 +3,8 @@
     <a
       *ngIf="!navItem?.children?.length; else menuButton"
       mat-button
-      [href]="navItem?.href"
+      [routerLink]="navItem?.href"
+      routerLinkActive="active-link"
       [target]="navItem?.target"
       >{{ navItem?.title }}</a
     >

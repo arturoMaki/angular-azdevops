@@ -5,20 +5,22 @@ import { NavigationItemComponent } from '../navigation-item/navigation-item.comp
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-main-navigation',
-    templateUrl: './main-navigation.component.html',
-    styleUrls: ['./main-navigation.component.scss'],
-    standalone: true,
-    imports: [
-        NgIf,
-        NgFor,
-        MatButtonModule,
-        MatMenuModule,
-        NavigationItemComponent,
-        AsyncPipe,
-    ],
+  selector: 'app-main-navigation',
+  templateUrl: './main-navigation.component.html',
+  styleUrls: ['./main-navigation.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    MatButtonModule,
+    MatMenuModule,
+    NavigationItemComponent,
+    AsyncPipe,
+    RouterModule,
+  ],
 })
 export class MainNavigationComponent {
   public mainNavigationItems$ = this._navigationService

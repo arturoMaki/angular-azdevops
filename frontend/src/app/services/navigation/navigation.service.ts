@@ -50,6 +50,7 @@ export interface NavigationItem {
   target: '_self' | '_blank' | '_parent' | '_top';
   icon: string;
   children: NavigationItem[];
+  isExternal: boolean;
 }
 
 @Injectable({
@@ -107,6 +108,7 @@ export class NavigationService {
           href: href || slug,
           icon,
           target,
+          isExternal: !!href,
           children: [],
         };
 

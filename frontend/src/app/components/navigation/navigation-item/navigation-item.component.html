@@ -1,8 +1,8 @@
 <a
   *ngIf="!navItem?.children?.length; else menuButton"
   mat-menu-item
-  [href]="navItem?.href"
-  [target]="navItem?.target"
+  [routerLink]="navItem?.href"
+  routerLinkActive="active-link"
   >{{ navItem?.title }}</a
 >
 <ng-template #menuButton>

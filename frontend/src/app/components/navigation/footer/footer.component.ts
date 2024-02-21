@@ -6,20 +6,22 @@ import { NavigationItemComponent } from '../navigation-item/navigation-item.comp
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
 import { NgIf, NgFor, AsyncPipe } from '@angular/common';
+import { RouterModule } from '@angular/router';
 
 @Component({
-    selector: 'app-footer',
-    templateUrl: './footer.component.html',
-    styleUrls: ['./footer.component.scss'],
-    standalone: true,
-    imports: [
-        NgIf,
-        NgFor,
-        MatButtonModule,
-        MatMenuModule,
-        NavigationItemComponent,
-        AsyncPipe,
-    ],
+  selector: 'app-footer',
+  templateUrl: './footer.component.html',
+  styleUrls: ['./footer.component.scss'],
+  standalone: true,
+  imports: [
+    NgIf,
+    NgFor,
+    MatButtonModule,
+    MatMenuModule,
+    NavigationItemComponent,
+    AsyncPipe,
+    RouterModule,
+  ],
 })
 export class FooterComponent {
   public strapiBaseUrl = environment.strapiBaseUrl;

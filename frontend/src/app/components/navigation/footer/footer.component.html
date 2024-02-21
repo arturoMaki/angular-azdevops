@@ -1,15 +1,29 @@
 <footer *ngIf="footerItems$ | async as navItems" class="footer" #footer>
   <ng-container *ngFor="let navItem of navItems">
-    <a
-      *ngIf="!navItem?.children?.length; else menuButton"
-      mat-button
-      [href]="navItem?.href"
-      [target]="navItem?.target"
-      ><img
-        class="footer_icon"
-        *ngIf="navItem?.icon; else titleTmp"
-        [src]="strapiBaseUrl + navItem?.icon"
-    /></a>
+    <ng-container *ngIf="!navItem?.children?.length; else menuButton">
+      <a
+        *ngIf="navItem?.isExternal; else internalLinkTmp"
+        mat-button
+        [href]="navItem?.href"
+        [target]="navItem?.target"
+        ><img
+          class="footer_icon"
+          *ngIf="navItem?.icon; else titleTmp"
+          [src]="strapiBaseUrl + navItem?.icon"
+      /></a>
+      <ng-template #internalLinkTmp>
+        <a
+          mat-button
+          [routerLink]="navItem?.href"
+          routerLinkActive="active-link"
+          ><img
+            class="footer_icon"
+            *ngIf="navItem?.icon; else titleTmp"
+            [src]="strapiBaseUrl + navItem?.icon"
+        /></a>
+      </ng-template>
+    </ng-container>
+
     <ng-template #titleTmp>{{ navItem?.title }}</ng-template>
     <ng-template #menuButton>
       <button mat-button [matMenuTriggerFor]="menu">
