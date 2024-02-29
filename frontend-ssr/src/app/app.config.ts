@@ -1,16 +1,27 @@
-import { ApplicationConfig } from '@angular/core';
+import {
+  APP_INITIALIZER,
+  ApplicationConfig,
+  importProvidersFrom,
+} from '@angular/core';
 import { Router, provideRouter } from '@angular/router';
 
-import { provideClientHydration } from '@angular/platform-browser';
-import { routes } from './app.routes';
-
-async function provideRoutes() {
-  return provideRouter(await routes);
-}
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { BrowserModule } from '@angular/platform-browser';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { initializeDynamicRouting, routes } from './app.routes';
+import { DataPageService } from './services/data-page/data-page.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    { provide: 'routes', useFactory: provideRoutes, deps: [Router] },
-    provideClientHydration(),
+    importProvidersFrom(BrowserModule),
+    {
+      provide: APP_INITIALIZER,
+      useFactory: initializeDynamicRouting,
+      multi: true,
+      deps: [Router, DataPageService],
+    },
+    provideHttpClient(withFetch()),
+    provideAnimations(),
+    provideRouter(routes),
   ],
 };

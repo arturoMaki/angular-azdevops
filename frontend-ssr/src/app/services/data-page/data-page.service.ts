@@ -1,36 +1,31 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Route, Routes } from '@angular/router';
-import axios, { AxiosResponse } from 'axios';
+import { Observable } from 'rxjs';
+import { StrapiResponse } from 'strapi-sdk-js';
 import { environment } from '../../../environments/environment';
 import { APIResponseData } from '../../../strapi-types/types';
 import { BasePageComponent } from '../../components/base-page/base-page.component';
-
-interface Page {
-  id: number;
-  attributes: {
-    Title: string;
-    Slug: string;
-    parent?: {
-      data: Page;
-    };
-  };
-}
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataPageService {
-  constructor() {}
+  private _strapiApiBaseUrl = environment.strapiApiBaseUrl;
 
-  public static getDataPages() {
+  constructor(private _http: HttpClient) {}
+
+  public getDataPages$(): Observable<
+    StrapiResponse<APIResponseData<'api::website.website'>>
+  > {
     const endpoint = '/websites/the-times';
 
-    return axios.get<AxiosResponse<APIResponseData<'api::website.website'>>>(
-      `${environment.strapiApiBaseUrl}${endpoint}`
-    );
+    return this._http.get<
+      StrapiResponse<APIResponseData<'api::website.website'>>
+    >(`${this._strapiApiBaseUrl}${endpoint}`);
   }
 
-  public static buildTree(
+  public buildTree(
     nodes: APIResponseData<'api::data-page.data-page'>[],
     parentName: string | null = null
   ): Routes {
@@ -42,7 +37,7 @@ export class DataPageService {
 
       if (nodeParentName === parentName) {
         const newNode: Route = {
-          path: node.attributes.Slug?.substring(1),
+          path: node?.attributes?.Slug?.substring(1) || '',
           component: BasePageComponent,
           children: [],
         };
@@ -56,7 +51,6 @@ export class DataPageService {
         result.push(newNode);
       }
     });
-    console.log(result);
 
     return result;
   }

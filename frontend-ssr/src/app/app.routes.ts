@@ -1,22 +1,23 @@
-import { Routes } from '@angular/router';
+import { Router, Routes } from '@angular/router';
+import { Observable, map, take, tap } from 'rxjs';
 import { DataPageService } from './services/data-page/data-page.service';
 
-const initializeDynamicRoutes = async (): Promise<Routes> => {
-  const result = DataPageService.getDataPages();
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+];
 
-  return result
-    .then(({ data }) => {
-      if (data?.data?.attributes?.data_pages) {
-        const pages = data.data.attributes.data_pages.data;
-        const tree = DataPageService.buildTree(pages);
-        return tree;
-      }
-      return [] as Routes;
-    })
-    .catch((err) => {
-      console.log(err);
-      return [] as Routes;
-    });
-};
-
-export const routes = initializeDynamicRoutes();
+export function initializeDynamicRouting(
+  router: Router,
+  dataPageService: DataPageService
+): () => Observable<any> {
+  return () =>
+    dataPageService.getDataPages$().pipe(
+      take(1),
+      map((res) => res?.data?.attributes?.data_pages?.data),
+      tap((pages) => {
+        if (pages) {
+          router.resetConfig(dataPageService.buildTree(pages));
+        }
+      })
+    );
+}
