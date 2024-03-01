@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasePageComponent } from './base-page.component';
+import { LayoutComponent } from './layout.component';
 
-describe('BasePageComponent', () => {
-  let component: BasePageComponent;
-  let fixture: ComponentFixture<BasePageComponent>;
+describe('LayoutComponent', () => {
+  let component: LayoutComponent;
+  let fixture: ComponentFixture<LayoutComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [BasePageComponent]
+    imports: [LayoutComponent]
 });
-    fixture = TestBed.createComponent(BasePageComponent);
+    fixture = TestBed.createComponent(LayoutComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

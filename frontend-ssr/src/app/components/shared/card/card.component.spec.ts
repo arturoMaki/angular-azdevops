@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BasePageComponent } from './base-page.component';
+import { CardComponent } from './card.component';
 
-describe('BasePageComponent', () => {
-  let component: BasePageComponent;
-  let fixture: ComponentFixture<BasePageComponent>;
+describe('CardComponent', () => {
+  let component: CardComponent;
+  let fixture: ComponentFixture<CardComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-    imports: [BasePageComponent]
+    imports: [CardComponent]
 });
-    fixture = TestBed.createComponent(BasePageComponent);
+    fixture = TestBed.createComponent(CardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

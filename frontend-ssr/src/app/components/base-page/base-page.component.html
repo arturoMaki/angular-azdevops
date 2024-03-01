@@ -1,1 +1,22 @@
-<p>base-page works!</p>
+<div *ngIf="components$ | async as components">
+  <div *ngFor="let component of components; let index = index">
+    <div [ngSwitch]="component.__component">
+      <ng-container *ngSwitchCase="'components.tab-group'">
+        <app-tab-group [items]="component.component" />
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'components.card'">
+        <app-card
+          [title]="component.relational_field.data.attributes.Title"
+          [subtitle]="component.relational_field.data.attributes.Subtitle"
+          [image]="
+            getImage(
+              component.relational_field.data.attributes.Image.data.attributes
+                .formats.large.url
+            )
+          "
+        ></app-card>
+      </ng-container>
+    </div>
+  </div>
+</div>
